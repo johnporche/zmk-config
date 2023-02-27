@@ -227,7 +227,7 @@
    &kp LG(LS(4))   &kp LG(X)  &kp LG(C) &kp LG(V) &kp CARET  &kp LBRC &kp RBRC    &kp EQUAL   &kp DLLR &kp HASH  &kp PRCNT  &sl FUNC
    &to MACNAV      &kp EXCL   &autopar  &kp TILDE &kp AT     &kp LPAR &kp RPAR    &kp UNDER   &autobkt &kp BSLH  &kp QMARK  &autobrc
    &kp LA(LG(ESC)) &none      &kp FSLH  &kp STAR  &kp AMPS   &kp LBKT &kp RBKT    &kp GRAVE   &kp PLUS &kp MINUS &kp PIPE   &none
-                    	                &caps     &caps_word &kp DEL  &to MACNUM  &to MACBASE &none
+                    	                &kp CAPS     &caps_word &kp DEL  &to MACNUM  &to MACBASE &none
                         >;
                 };
 
@@ -292,7 +292,7 @@
    &kp LC(SPC)  &kp LC(W)  &kp LA(W) &kp LC(Y) &kp CARET  &kp LBRC &kp RBRC    &kp EQUAL   &kp DLLR &kp HASH  &kp PRCNT  &sl FUNC
    &to E_NAV    &kp EXCL   &autopar  &kp TILDE &kp AT     &kp LPAR &kp RPAR    &kp UNDER   &autobkt &kp BSLH  &kp QMARK  &autobrc
    &kp LC(G)    &none      &kp FSLH  &kp STAR  &kp AMPS   &kp LBKT &kp RBKT    &kp GRAVE   &kp PLUS &kp MINUS &kp PIPE   &none
-                    	             &caps     &caps_word &kp DEL  &to E_NUM   &to EMACS   &none
+                    	             &kp CAPS    &caps_word &kp DEL  &to E_NUM   &to EMACS   &none
                         >;
                 };
 
@@ -355,7 +355,7 @@
    &kp LG(LS(S))   &kp LG(X)  &kp LG(C) &kp LG(V) &kp CARET  &kp LBRC &kp RBRC    &kp EQUAL   &kp DLLR &kp HASH  &kp PRCNT  &sl FUNC
    &to E_NAV       &kp EXCL   &autopar  &kp TILDE &kp AT     &kp LPAR &kp RPAR    &kp UNDER   &autobkt &kp BSLH  &kp QMARK  &autobrc
    &kp ESC         &none      &kp FSLH  &kp STAR  &kp AMPS   &kp LBKT &kp RBKT    &kp GRAVE   &kp PLUS &kp MINUS &kp PIPE   &none
-                    	                &caps     &caps_word &kp DEL  &to E_NUM   &to EMACS   &none
+                    	                &kp CAPS    &caps_word &kp DEL  &to E_NUM   &to EMACS   &none
                         >;
                 };
                 g_num_layer {
