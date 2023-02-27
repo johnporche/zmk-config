@@ -211,7 +211,7 @@
                         bindings = <
    &kp TAB       &kp LG(O)         &kp LA(BSPC)  &kp LS(LA(DEL))      &kp LG(S)   &kp LG(LS(S)) &kp LG(F)     &kp PG_UP    &kp UP                &kp PG_DN     &kp LC(K)     &sl FUNC
    &to MACBASE   &kp LCTRL         &kp LALT      &kp LCMD             &kp LSHFT   &kp LC(K)     &kp LG(LEFT)  &kp LEFT     &kp DOWN              &kp RIGHT     &kp LG(RIGHT) &kp RET
-   &kp LG(LS(-)) &kp LG(LS(EQUAL)) &kp LG(W)     &kp LG(M)            &kp LG(O)   &kp LG(N)     &kp LG(G)     &kp LA(LEFT) &kp LA(RIGHT)         &kp LG(LS(G)) &kp LG(Z)     &kp LC(F3)
+   &kp LG(LS(MINUS)) &kp LG(LS(EQUAL)) &kp LG(W)     &kp LG(M)            &kp LG(O)   &kp LG(N)     &kp LG(G)     &kp LA(LEFT) &kp LA(RIGHT)         &kp LG(LS(G)) &kp LG(Z)     &kp LC(F3)
                     	                         &kp LG(LA(LC(LEFT))) &kp LG(SPC) &kp BSPC      &mo G_NUM     &sl MACSYM   &kp LG(LA(LC(RIGHT)))
                         >;
                 };
