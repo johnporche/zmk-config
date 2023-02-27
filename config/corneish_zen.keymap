@@ -147,7 +147,7 @@
         bindings = < &kp LT &kp EQUAL >;
     )
 
-}
+};
 
 
 / {
