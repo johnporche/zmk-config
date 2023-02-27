@@ -8,60 +8,399 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#define MAC 0
+#define MACNUM 1
+#define MACNAV 2
+#define MACSYM 3
+#define gnrc_num 12
+#define FUNC 13
+#define KEYBOARD 14
+
+#define AS(keycode) &as LS(keycode) keycode     // Autoshift Macro
+
+
+
+
 
 / {
+
+
   chosen {
     zmk,matrix_transform = &default_transform;
     //zmk,matrix_transform = &five_column_transform;
   };
 };
 
+ /{  // MACROS
+     ZMK_MACRO(emacs_save,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LC(X) &kp LC(S) >;
+    )
+
+     ZMK_MACRO(emacs_buffer,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LC(X) &kp B >;
+    )
+
+     ZMK_MACRO(emacs_save_as,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LC(X) &kp LC(W) >;
+    )
+
+     ZMK_MACRO(emacs_unzoom,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LC(X) &kp LC(MINUS) &kp LC(G) >;
+    )
+
+     ZMK_MACRO(emacs_zoom,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LC(X) &kp LC(LS(EQUAL)) &kp LC(G) >;
+    )
+
+
+     ZMK_MACRO(emacs_killbuff,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LC(X) &kp K >;
+    )
+
+
+     ZMK_MACRO(emacs_closewin,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LC(X) &kp N0 >;
+    )
+
+     ZMK_MACRO(emacs_killbuff,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LC(X) &kp K >;
+    )
+
+     ZMK_MACRO(emacs_openfile,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LC(X) &kp F >;
+    )
+
+
+     ZMK_MACRO(emacs_nextwin,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LC(X) &kp O >;
+    )
+
+     ZMK_MACRO(emacs_split_h,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LC(X) &kp 2 >;
+    )
+
+     ZMK_MACRO(win_del_line,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LS(END) &kp DEL >;
+    )
+
+
+
+     ZMK_MACRO(emacs_split_v,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LC(X) &kp 3 >;
+    )
+
+
+
+    ZMK_MACRO(autobrc,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LBRC &kp RBRC &kp LEFT>;
+    )
+
+     ZMK_MACRO(autopar,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LPAR &kp RPAR &kp LEFT  >;
+    )
+
+     ZMK_MACRO(autobkt,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LBKT &kp RBKT &kp LEFT >;
+    )
+
+     ZMK_MACRO(vlog_assign,
+        wait-ms = <30>;
+        tap-ms = <40>;
+        bindings = < &kp LT &kp EQUAL >;
+    )
+
+
+
+}
+
+
 / {
+
+ behaviors {
+        as: auto_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AUTO_SHIFT";
+            #binding-cells
+	    -sn  = <2>;
+            tapping_term_ms = <135>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+
         keymap {
                 compatible = "zmk,keymap";
 
-                default_layer {
-                        label = "QWERTY";
+                macbase_layer {
+                        label = "MACBASE"; // layer 0
+// notes: i want the nav layer activated as momentary or one-shot, not toggle, unless sent there by another laye0r
+//        func should be a 'to' switch to that layer, but will consider osl at a later time
+//        num should be momentary switch over
+//        sym should be one shot layer
 // -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+// | TAB   |  '  |  ,   |  .    |  P  |  Y   |   |  F    |  G    |  C  |  R  |  L  | L:FNC |
+// | L:NAV |  A  |  O   |  E    |  U  |  I   |   |  D    |  H    |  T  |  N  |  S  | RET   |
+// | ESC   |  ;  |  Q   |  J    |  K  |  X   |   |  B    |  M    |  W  |  V  |  Z  | CMD   |
+//                      | LCTRL | SPC | BKSP |   | L:NUM | L:SYM | ALT |
+   bindings = <
+   AS(TAB)     AS(SQT)  AS(COMMA) AS(DOT)   AS(P)     AS(Y)      AS(F)      AS(G)    AS(C)   AS(R)   AS(L)    &sl FUNC
+   &mo MACNAV  AS(A)    AS(O)     AS(E)     AS(U)     AS(I)      AS(D)      AS(H)    AS(T)   AS(N)   AS(S)    AS(RET)
+   AS(ESC)     AS(SEMI) AS(Q)     AS(J)     AS(K)     AS(X)      AS(B)      AS(M)    AS(W)   AS(V)   AS(Z)    &sk RCMD
+                        &sk LCTRL &kp SPACE &kp BKSPC &mo MACNUM &sl MACSYM &sk RALT
                         >;
                 };
-                lower_layer {
-                        label = "NUMBER";
+                macnum_layer {
+                        label = "MACNUM"; // layer 1
 // -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                          	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+// | TAB   |  '  |  ,  |  .     |  ^  | {    |   | }    | =     |  $   |  #  |  %   | L:FNC |
+// | L:NAV |  6  |  2  |  0     |  4  | (    |   | )    | 5     |  1   |  3  |  7   | RET    |
+// | ESC   |  ;  |  /  |  *     |  8  | [    |   | ]    | 9     |  +   |  -  | NONE | NONE   |
+//                     | MACRO1 | SPC | BKSP |   | NONE | 3:SYM |MACRO2|
+   bindings = <
+   &kp TAB    AS(SQT)  AS(COMMA) AS(DOT)          &kp CARET   &kp LBRC    &kp RBRC   &kp EQUAL  &kp DLLR &kp HASH  &kp PRCNT &sl FUNC
+   &mo MACNAV &kp N6   &kp N2    &kp N0           &kp N4      &kp LPAR    &kp RPAR   &kp N5     &kp N1   &kp N3    &kp N7    &kp RET
+   &kp ESC    AS(SEMI) &kp FSLH  &kp KP_MULTIPLY  &kp N8      &kp LBKT    &kp RBKT   &kp N9     &kp PLUS &kp MINUS &none     &none
+                                 &none            &kp SPACE   &kp BKSP    &none      &mo MACSYM &none
                         >;
                 };
 
-                raise_layer {
-                        label = "SYMBOL";
+                macnav_layer {
+                        label = "MACNAV"; //layer 2
 // -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
+// | TAB    | BUFFER | DEL WORD LFT| DEL WORD RGT | SAVEAS  | SAVE   |  | FIND       | PAGEUP    | UP         | PAGEDOWN   | REPLACE | L:FUNC   |
+// | L:BASE | LCTRL  | LALT        | LCMD         | LSHFT | DEL LINE |  | HOME       | LEFT      | DOWN       | RIGHT      | END     | ENTER    |
+// | UNZOOM | ZOOM   | CLOSE       | MINIMIZE     | NEW   | OPEN     |  | FIND REV   | FIND FWD  | WORD LEFT  | WORD RIGHT | UNDO    | NEXT WIN |
+//                                 | WIN LEFT     | SPC   | DEL      |  | L:NUM      | L:SYM     | WIN RIGHT  |
                         bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
-                    	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+   &kp TAB       &kp LG(O)         &kp LA(BSPC)  &kp LS(LA(DEL))      &kp LG(S)   &kp LG(LS(S)) &kp LG(F)     &kp PG_UP    &kp UP                &kp PG_DN     &kp LC(K)     &sl FUNC
+   &to MACBASE   &kp LCTRL         &kp LALT      &kp LCMD             &kp LSHFT   &kp LC(K)     &kp LG(LEFT)  &kp LEFT     &kp DOWN              &kp RIGHT     &kp LG(RIGHT) &kp RET
+   &kp LG(LS(-)) &kp LG(LS(EQUAL)) &kp LG(W)     &kp LG(M)            &kp LG(O)   &kp LG(N)     &kp LG(G)     &kp LA(LEFT) &kp LA(RIGHT)         &kp LG(LS(G)) &kp LG(Z)     &kp LC(F3)
+                    	                         &kp LG(LA(LC(LEFT))) &kp LG(SPC) &kp BSPC      &mo G_NUM     &sl MACSYM   &kp LG(LA(LC(RIGHT)))
                         >;
                 };
+		
+                macsym_layer {
+                        label = "MACSYM"; //layer 3
+// -----------------------------------------------------------------------------------------
+// | SNIP     | CUT  | COPY  | PASTE | ^       | {   | | }     |  =     |  $   |  #  |  %    | L:FUNC | 
+// | L:NAV    | !    | ()    |  ~    | @       | (   | | )     |  _     |  []  |  \  |  ?    | {}     |
+// | ESC/QUIT | NONE | /     |  *    | &       | [   | | ]     |  `     |  +   |  -  |  PIPE | NONE   |
+//                           | CAPS  | CAPSWRD | DEL | | L:NUM | L:BASE | NONE |
+                        bindings = <
+   &kp LG(LS(4))   &kp LG(X)  &kp LG(C) &kp LG(V) &kp CARET  &kp LBRC &kp RBRC    &kp EQUAL   &kp DLLR &kp HASH  &kp PRCNT  &sl FUNC
+   &to MACNAV      &kp EXCL   &autopar  &kp TILDE &kp AT     &kp LPAR &kp RPAR    &kp UNDER   &autobkt &kp BSLH  &kp QMARK  &autobrc
+   &kp LA(LG(ESC)) &none      &kp FSLH  &kp STAR  &kp AMPS   &kp LBKT &kp RBKT    &kp GRAVE   &kp PLUS &kp MINUS &kp PIPE   &none
+                    	                &caps     &caps_word &kp DEL  &to MACNUM  &to MACBASE &none
+                        >;
+                };
+
+// insert emacs and windows keyboards here
+
+                emacs_layer {
+                      label = "EMACS"; // layer 4
+// notes: i want the nav layer activated as momentary or one-shot, not toggle, unless sent there by another laye0r
+//        func should be a 'to' switch to that layer, but will consider osl at a later time
+//        num should be momentary switch over
+//        sym should be one shot layer
+// -----------------------------------------------------------------------------------------
+// | TAB   |  '  |  ,   |  .    |  P  |  Y   |   |  F    |  G    |  C  |  R  |  L  | L:FNC |
+// | L:NAV |  A  |  O   |  E    |  U  |  I   |   |  D    |  H    |  T  |  N  |  S  | RET   |
+// | ESC   |  ;  |  Q   |  J    |  K  |  X   |   |  B    |  M    |  W  |  V  |  Z  | CMD   |
+//                      | LCTRL | SPC | BKSP |   | L:NUM | L:SYM | ALT |
+   bindings = <
+   AS(TAB)     AS(SQT)  AS(COMMA) AS(DOT)   AS(P)     AS(Y)      AS(F)      AS(G)    AS(C)   AS(R)   AS(L)    &sl FUNC
+   &mo E_NAV  AS(A)    AS(O)     AS(E)     AS(U)     AS(I)      AS(D)      AS(H)    AS(T)   AS(N)   AS(S)    AS(RET)
+   AS(ESC)     AS(SEMI) AS(Q)     AS(J)     AS(K)     AS(X)      AS(B)      AS(M)    AS(W)   AS(V)   AS(Z)    &sk RCMD
+                        &sk LCTRL &kp SPACE &kp BKSPC &mo E_NUM &sl E_SYM &sk RALT
+                        >;
+                };
+                e_num_layer {
+                        label = "E_NUM"; // layer 5
+// -----------------------------------------------------------------------------------------
+// | TAB   |  '  |  ,  |  .     |  ^  | {    |   | }    | =     |  $   |  #  |  %   | L:FNC |
+// | L:NAV |  6  |  2  |  0     |  4  | (    |   | )    | 5     |  1   |  3  |  7   | RET    |
+// | ESC   |  ;  |  /  |  *     |  8  | [    |   | ]    | 9     |  +   |  -  | NONE | NONE   |
+//                     | MACRO1 | SPC | BKSP |   | NONE | 3:SYM |MACRO2|
+   bindings = <
+   &kp TAB    AS(SQT)  AS(COMMA) AS(DOT)          &kp CARET   &kp LBRC    &kp RBRC   &kp EQUAL &kp DLLR &kp HASH  &kp PRCNT &sl FUNC
+   &mo E_NAV  &kp N6   &kp N2    &kp N0           &kp N4      &kp LPAR    &kp RPAR   &kp N5    &kp N1   &kp N3    &kp N7    &kp RET
+   &kp ESC    AS(SEMI) &kp FSLH  &kp KP_MULTIPLY  &kp N8      &kp LBKT    &kp RBKT   &kp N9    &kp PLUS &kp MINUS &none     &none
+                                 &none            &kp SPACE   &kp BKSP    &none      &mo E_SYM &none
+                        >;
+                };
+
+                e_nav_layer {
+                        label = "E_NAV"; //layer 6
+// -----------------------------------------------------------------------------------------------------------------------------------------------
+// | TAB    | BUFFER | DEL WORD LFT| DEL WORD RGT | SAVEAS| SAVE     |  | FIND       | PAGEUP    | UP         | PAGEDOWN     | REPLACE | L:FUNC   |
+// | L:BASE | LCTRL  | LALT        | LCMD         | LSHFT | DEL LINE |  | HOME       | LEFT      | DOWN       | RIGHT      | END     | ENTER    |
+// | UNZOOM | ZOOM   | CLOSE       | MINIMIZE     | NEW   | OPEN     |  | FIND REV   | FIND FWD  | WORD LEFT  | WORD RIGHT | UNDO    | NEXT WIN |
+//                                 | WIN LEFT     | SPC   | DEL      |  | L:NUM      | L:SYM     | WIN RIGHT  |
+                        bindings = <
+   &kp TAB       &emacs_buffer     &kp LC(BSPC)    &kp LC(DEL)      &emacs_save_as   &emacs_save     &kp LC(S)     &kp PG_UP    &kp UP                &kp PG_DN  &kp LA(LS(5))      &sl FUNC
+   &to EMACS     &kp LCTRL         &kp LALT        &kp LCMD         &kp LSHFT        &kp LC(K)       &kp LC(A)     &kp LEFT     &kp DOWN              &kp RIGHT  &kp LC(E)          &kp RET
+   &emacs_unzoom &emacs_zoom       &emacs_killbuff &emacs_closewin  &emacs_openfile  &emacs_openfile &kp LC(R)     &kp LC(S)    &kp LA(B)             &kp LA(F)  &kp LC(LS(MINUS))  &emacs_nextwin
+                    	                           &emacs_split_h   &none            &kp BSPC        &mo G_NUM     &sl E_SYM    &emacs_split_v
+						   >;
+                };
+		
+                e_sym_layer {
+                        label = "E_SYM"; //layer 7
+// -----------------------------------------------------------------------------------------
+// | MARK     | CUT  | COPY  | PASTE | ^       | {   | | }     |  =     |  $   |  #  |  %    | L:FUNC | 
+// | L:NAV    | !    | ()    |  ~    | @       | (   | | )     |  _     |  []  |  \  |  ?    | {}     |
+// | ESC/QUIT | NONE | /     |  *    | &       | [   | | ]     |  `     |  +   |  -  |  PIPE | NONE   |
+//                           | CAPS  | CAPSWRD | DEL | | L:NUM | L:BASE | NONE |
+                        bindings = <
+   &kp LC(SPC)  &kp LC(W)  &kp LA(W) &kp LC(Y) &kp CARET  &kp LBRC &kp RBRC    &kp EQUAL   &kp DLLR &kp HASH  &kp PRCNT  &sl FUNC
+   &to E_NAV    &kp EXCL   &autopar  &kp TILDE &kp AT     &kp LPAR &kp RPAR    &kp UNDER   &autobkt &kp BSLH  &kp QMARK  &autobrc
+   &kp LC(G)    &none      &kp FSLH  &kp STAR  &kp AMPS   &kp LBKT &kp RBKT    &kp GRAVE   &kp PLUS &kp MINUS &kp PIPE   &none
+                    	             &caps     &caps_word &kp DEL  &to E_NUM   &to EMACS   &none
+                        >;
+                };
+
+                winlin_layer {
+                        label = "WINLIN"; // layer 8
+// notes: i want the nav layer activated as momentary or one-shot, not toggle, unless sent there by another laye0r
+//        func should be a 'to' switch to that layer, but will consider osl at a later time
+//        num should be momentary switch over
+//        sym should be one shot layer
+// -----------------------------------------------------------------------------------------
+// | TAB   |  '  |  ,   |  .    |  P  |  Y   |   |  F    |  G    |  C  |  R  |  L  | L:FNC |
+// | L:NAV |  A  |  O   |  E    |  U  |  I   |   |  D    |  H    |  T  |  N  |  S  | RET   |
+// | ESC   |  ;  |  Q   |  J    |  K  |  X   |   |  B    |  M    |  W  |  V  |  Z  | CMD   |
+//                      | LCTRL | SPC | BKSP |   | L:NUM | L:SYM | ALT |
+   bindings = <
+   AS(TAB)     AS(SQT)  AS(COMMA) AS(DOT)   AS(P)     AS(Y)      AS(F)      AS(G)    AS(C)   AS(R)   AS(L)    &sl FUNC
+   &mo WINNAV  AS(A)    AS(O)     AS(E)     AS(U)     AS(I)      AS(D)      AS(H)    AS(T)   AS(N)   AS(S)    AS(RET)
+   AS(ESC)     AS(SEMI) AS(Q)     AS(J)     AS(K)     AS(X)      AS(B)      AS(M)    AS(W)   AS(V)   AS(Z)    &sk RCMD
+                        &sk LCTRL &kp SPACE &kp BKSPC &mo WINNUM &sl WINSYM &sk RALT
+                        >;
+                };
+                winnum_layer {
+                        label = "WINNUM"; // layer 9
+// -----------------------------------------------------------------------------------------
+// | TAB   |  '  |  ,  |  .     |  ^  | {    |   | }    | =     |  $   |  #  |  %   | L:FNC |
+// | L:NAV |  6  |  2  |  0     |  4  | (    |   | )    | 5     |  1   |  3  |  7   | RET    |
+// | ESC   |  ;  |  /  |  *     |  8  | [    |   | ]    | 9     |  +   |  -  | NONE | NONE   |
+//                     | MACRO1 | SPC | BKSP |   | NONE | 3:SYM |MACRO2|
+   bindings = <
+   &kp TAB    AS(SQT)  AS(COMMA) AS(DOT)          &kp CARET   &kp LBRC    &kp RBRC   &kp EQUAL &kp DLLR &kp HASH  &kp PRCNT &sl FUNC
+   &mo MACNAV &kp N6   &kp N2    &kp N0           &kp N4      &kp LPAR    &kp RPAR   &kp N5    &kp N1   &kp N3    &kp N7    &kp RET
+   &kp ESC    AS(SEMI) &kp FSLH  &kp KP_MULTIPLY  &kp N8      &kp LBKT    &kp RBKT   &kp N9    &kp PLUS &kp MINUS &none     &none
+                                 &none            &kp SPACE   &kp BKSP    &none      &mo WINSYM &none
+                        >;
+                };
+
+                winnav_layer {
+                        label = "WINNAV"; //layer 10
+// -----------------------------------------------------------------------------------------
+// | TAB    | BUFFER | DEL WORD LFT| DEL WORD RGT | SAVEAS  | SAVE   |  | FIND       | PAGEDOWN  | UP         | PAGEUP     | REPLACE | L:FUNC   |
+// | L:BASE | LCTRL  | LALT        | LCMD         | LSHFT | DEL LINE |  | HOME       | LEFT      | DOWN       | RIGHT      | END     | ENTER    |
+// | UNZOOM | ZOOM   | CLOSE       | MINIMIZE     | NEW   | OPEN     |  | FIND REV   | FIND FWD  | WORD LEFT  | WORD RIGHT | UNDO    | NEXT WIN |
+//                                 | WIN LEFT     | SPC   | DEL      |  | L:NUM      | L:SYM     | WIN RIGHT  |
+                        bindings = <
+   AS(TAB)       &kp LC(O)         &kp LC(BSPC)  &kp LC(DEL)          &kp F12     &kp LC(S)     &kp LC(F)          &kp PG_UP    &kp UP                &kp PG_DN     &kp LC(H)     &sl FUNC
+   &to WINLIN    &kp LCTRL         &kp LALT      &kp LCMD             &kp LSHFT   &win_del_line &kp HOME           &kp LEFT     &kp DOWN              &kp RIGHT     &kp END       &kp RET
+   &kp LC(MINUS) &kp LC(LS(EQUAL)) &kp LC(W)     &kp LG(DOWN)         &kp LC(N)   &kp LG(O)     &kp LC(LS((G))     &kp F3       &kp LC(LEFT)          &kp LC(RIGHT) &kp LC(Z)     &kp LA(LC(TAB))
+                    	                         &kp LG(LA(LC(LEFT))) &kp LG(SPC) &kp BSPC      &mo G_NUM     &sl MACSYM   &kp LG(LA(LC(RIGHT)))
+                        >;
+                };
+		
+                winsym_layer {
+                        label = "WINSYM"; //layer 11
+// -----------------------------------------------------------------------------------------
+// | SNIP     | CUT  | COPY  | PASTE | ^       | {   | | }     |  =     |  $   |  #  |  %    | L:FUNC | 
+// | L:NAV    | !    | ()    |  ~    | @       | (   | | )     |  _     |  []  |  \  |  ?    | {}     |
+// | ESC/QUIT | NONE | /     |  *    | &       | [   | | ]     |  `     |  +   |  -  |  PIPE | NONE   |
+//                           | CAPS  | CAPSWRD | DEL | | L:NUM | L:BASE | NONE |
+                        bindings = <
+   &kp LG(LS(S))   &kp LG(X)  &kp LG(C) &kp LG(V) &kp CARET  &kp LBRC &kp RBRC    &kp EQUAL   &kp DLLR &kp HASH  &kp PRCNT  &sl FUNC
+   &to E_NAV       &kp EXCL   &autopar  &kp TILDE &kp AT     &kp LPAR &kp RPAR    &kp UNDER   &autobkt &kp BSLH  &kp QMARK  &autobrc
+   &kp ESC         &none      &kp FSLH  &kp STAR  &kp AMPS   &kp LBKT &kp RBKT    &kp GRAVE   &kp PLUS &kp MINUS &kp PIPE   &none
+                    	                &caps     &caps_word &kp DEL  &to E_NUM   &to EMACS   &none
+                        >;
+                };
+                g_num_layer {
+                        label = "G_NUM"; // layer 12
+// -----------------------------------------------------------------------------------------
+// | TAB   |  '  |  ,  |  .     |  ^  | {    |   | }    | =     |  $   |  #  |  %   | L:FNC |
+// | L:NAV |  6  |  2  |  0     |  4  | (    |   | )    | 5     |  1   |  3  |  7   | RET    |
+// | ESC   |  ;  |  /  |  *     |  8  | [    |   | ]    | 9     |  +   |  -  | NONE | NONE   |
+//                     | MACRO1 | SPC | BKSP |   | NONE | 3:SYM |MACRO2|
+   bindings = <
+   &kp TAB    AS(SQT)  AS(COMMA) AS(DOT)          &kp CARET   &kp LBRC    &kp RBRC   &kp EQUAL &kp DLLR &kp HASH  &kp PRCNT &sl FUNC
+   &none      &kp N6   &kp N2    &kp N0           &kp N4      &kp LPAR    &kp RPAR   &kp N5    &kp N1   &kp N3    &kp N7    &kp RET
+   &kp ESC    AS(SEMI) &kp FSLH  &kp KP_MULTIPLY  &kp N8      &kp LBKT    &kp RBKT   &kp N9    &kp PLUS &kp MINUS &none     &none
+                                 &none            &kp SPACE   &kp BKSP    &none      &none     &none
+                        >;
+                };
+
+                func_layer {
+                        label = "FUNC"; //layer 13
+// -----------------------------------------------------------------------------------------
+// |  F1  |  F2  |  F3  | F4   | F5   |  F6   |  F7   |  F8      | F9  | F10 | F11 | F12  |  
+// | VOLDN| LCTRL| LOPT | LCMD | LSHFT| VOLUP |  MUTE |  PREV    | NEXT| PLAY| STOP| KEYBD|
+// | F13  | F14  | F15  | F16  | F17  | F18   |  F19  |  F20     | F21 | F22 | F23 |  F24 |  
+//                      | NONE | NONE |MACBASE|WINBASE| EMACSBASE| NONE|
+                        bindings = <
+   &kp F1       &kp F2    &kp F3   &kp F4   &kp F5    &kp F6       &kp F7     &kp F8     &kp F9     &kp F10  &kp F11     &kp F12
+   &kp K_VOL_DN &sk LCTRL &sk LALT &sk LGUI &sk LSHFT &kp K_VOL_UP &kp K_MUTE &kp K_PREV &kp K_NEXT &kp K_PP &kp K_STOP2 &to KEYBD
+   &kp F13      &kp F14   &kp F15  &kp F16  &kp F17   &kp F18      &kp F19    &kp F20    &kp F21    &kp F22  &kp F23     &kp F24
+                    	           &none    &none     &to MACBASE  &to WINLIN &to EMACS  &none
+                        >;
+                };
+
+
+                func_layer {
+                        label = "KEYBD"; //layer 14
+			
+// -----------------------------------------------------------------------------------------
+// |  BT1  |  BT2   |  BT3   | BT4    | BTPREV   | BT:NEXT  |  BTCLR    |  NONE   |  NONE   |  NONE    |  NONE |  TO:FUNC  |  
+// | NONE  |  NONE  |  NONE  |  NONE  | NONE     | NONE     |  NONE     |  NONE   |  NONE   |  NONE    |  NONE |  NONE     |  
+// | NONE  |  NONE  |  NONE  |  NONE  | NONE     | NONE     |  NONE     |  NONE   |  NONE   |  NONE    |  NONE |  RESET    |  
+//                  |  NONE  | NONE   | MACBASE  | WINBASE  | EMACSBASE | NONE    |
+                        bindings = <
+   &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3  &bt BT_PRV &bt BT_NXT &bt BT_CLR  &none   &none &none  &none &none 
+   &none         &none        &none        &none         &none      &none      &none       &none   &none &none  &none &none
+   &none         &none        &none        &none         &none      &none      &none       &none   &none &none  &none &none
+                    	                   &none         &none      &none      &none       &none   &none
+                        >;
+                };
+       };
         };
 };
