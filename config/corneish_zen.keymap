@@ -183,7 +183,7 @@
    AS(TAB)     AS(SQT)  AS(COMMA) AS(DOT)   AS(P)     AS(Y)      AS(F)      AS(G)    AS(C)   AS(R)   AS(L)    &sl FUNC
    &mo MACNAV  AS(A)    AS(O)     AS(E)     AS(U)     AS(I)      AS(D)      AS(H)    AS(T)   AS(N)   AS(S)    AS(RET)
    AS(ESC)     AS(SEMI) AS(Q)     AS(J)     AS(K)     AS(X)      AS(B)      AS(M)    AS(W)   AS(V)   AS(Z)    &sk RCMD
-                        &sk LCTRL &kp SPACE &kp BKSPC &mo MACNUM &sl MACSYM &sk RALT
+                        &sk LCTRL &kp SPACE &kp BKSP &mo MACNUM &sl MACSYM &sk RALT
                         >;
                 };
                 macnum_layer {
@@ -248,7 +248,7 @@
    AS(TAB)     AS(SQT)  AS(COMMA) AS(DOT)   AS(P)     AS(Y)      AS(F)      AS(G)    AS(C)   AS(R)   AS(L)    &sl FUNC
    &mo E_NAV  AS(A)    AS(O)     AS(E)     AS(U)     AS(I)      AS(D)      AS(H)    AS(T)   AS(N)   AS(S)    AS(RET)
    AS(ESC)     AS(SEMI) AS(Q)     AS(J)     AS(K)     AS(X)      AS(B)      AS(M)    AS(W)   AS(V)   AS(Z)    &sk RCMD
-                        &sk LCTRL &kp SPACE &kp BKSPC &mo E_NUM &sl E_SYM &sk RALT
+                        &sk LCTRL &kp SPACE &kp BKSP &mo E_NUM &sl E_SYM &sk RALT
                         >;
                 };
                 e_num_layer {
@@ -311,7 +311,7 @@
    AS(TAB)     AS(SQT)  AS(COMMA) AS(DOT)   AS(P)     AS(Y)      AS(F)      AS(G)    AS(C)   AS(R)   AS(L)    &sl FUNC
    &mo WINNAV  AS(A)    AS(O)     AS(E)     AS(U)     AS(I)      AS(D)      AS(H)    AS(T)   AS(N)   AS(S)    AS(RET)
    AS(ESC)     AS(SEMI) AS(Q)     AS(J)     AS(K)     AS(X)      AS(B)      AS(M)    AS(W)   AS(V)   AS(Z)    &sk RCMD
-                        &sk LCTRL &kp SPACE &kp BKSPC &mo WINNUM &sl WINSYM &sk RALT
+                        &sk LCTRL &kp SPACE &kp BKSP &mo WINNUM &sl WINSYM &sk RALT
                         >;
                 };
                 winnum_layer {
