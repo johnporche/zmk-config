@@ -156,8 +156,7 @@
         as: auto_shift {
             compatible = "zmk,behavior-hold-tap";
             label = "AUTO_SHIFT";
-            #binding-cells
-	    -sn  = <2>;
+            #binding-cells = <2>;
             tapping_term_ms = <135>;
             quick_tap_ms = <0>;
             flavor = "tap-preferred";
