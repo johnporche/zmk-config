@@ -31,15 +31,13 @@
 
 
 / {
-
-
   chosen {
     zmk,matrix_transform = &default_transform;
     //zmk,matrix_transform = &five_column_transform;
   };
 };
 
- /{  // MACROS
+ / {  // MACROS
      ZMK_MACRO(emacs_save,
         wait-ms = <30>;
         tap-ms = <40>;
@@ -128,7 +126,7 @@
     ZMK_MACRO(autobrc,
         wait-ms = <30>;
         tap-ms = <40>;
-        bindings = < &kp LBRC &kp RBRC &kp LEFT>;
+        bindings = < &kp LBRC &kp RBRC &kp LEFT >;
     )
 
      ZMK_MACRO(autopar,
@@ -148,8 +146,6 @@
         tap-ms = <40>;
         bindings = < &kp LT &kp EQUAL >;
     )
-
-
 
 }
 
