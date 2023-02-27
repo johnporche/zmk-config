@@ -12,9 +12,17 @@
 #define MACNUM 1
 #define MACNAV 2
 #define MACSYM 3
-#define gnrc_num 12
+#define EMACS 4
+#define E_NUM 5
+#define E_NAV 6
+#define E_SYM 7
+#define WINLIN 8
+#define WINNUM 9
+#define WINNAV 10
+#define WINSYM 11
+#define G_NUM 12
 #define FUNC 13
-#define KEYBOARD 14
+#define KEYBD 14
 
 #define AS(keycode) &as LS(keycode) keycode     // Autoshift Macro
 
