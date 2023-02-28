@@ -157,7 +157,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "AUTO_SHIFT";
             #binding-cells = <2>;
-            tapping_term_ms = <135>;
+            tapping_term_ms = <200>;
             quick_tap_ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
@@ -356,7 +356,7 @@
    &to E_NAV       &kp EXCL   &autopar  &kp TILDE &kp AT     &kp LPAR &kp RPAR    &kp UNDER   &autobkt &kp BSLH  &kp QMARK  &autobrc
    &kp ESC         &none      &kp FSLH  &kp STAR  &kp AMPS   &kp LBKT &kp RBKT    &kp GRAVE   &kp PLUS &kp MINUS &kp PIPE   &none
                     	                &kp CAPS    &caps_word &kp DEL  &to E_NUM   &to EMACS   &none
-                        >;
+u                        >;
                 };
                 g_num_layer {
                         label = "G_NUM"; // layer 12
