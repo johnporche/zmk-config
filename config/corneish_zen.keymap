@@ -181,7 +181,7 @@
 //                      | LCTRL | SPC | BSPC |   | L:NUM | L:SYM | ALT |
    bindings = <
    AS(TAB)     AS(SQT)  AS(COMMA) AS(DOT)   AS(P)     AS(Y)      AS(F)      AS(G)    AS(C)   AS(R)   AS(L)    &sl FUNC
-   &mo MACNAV  AS(A)    AS(O)     AS(E)     AS(U)     AS(I)      AS(D)      AS(H)    AS(T)   AS(N)   AS(S)    AS(RET)
+   &sl MACNAV  AS(A)    AS(O)     AS(E)     AS(U)     AS(I)      AS(D)      AS(H)    AS(T)   AS(N)   AS(S)    AS(RET)
    AS(ESC)     AS(SEMI) AS(Q)     AS(J)     AS(K)     AS(X)      AS(B)      AS(M)    AS(W)   AS(V)   AS(Z)    &sk RCMD
                         &sk LCTRL &kp SPACE &kp BSPC &mo MACNUM &sl MACSYM &sk RALT
                         >;
@@ -195,7 +195,7 @@
 //                     | MACRO1 | SPC | BSPC |   | NONE | 3:SYM |MACRO2|
    bindings = <
    &kp TAB    AS(SQT)  AS(COMMA) AS(DOT)          &kp CARET   &kp LBRC    &kp RBRC   &kp EQUAL  &kp DLLR &kp HASH  &kp PRCNT &sl FUNC
-   &mo MACNAV &kp N6   &kp N2    &kp N0           &kp N4      &kp LPAR    &kp RPAR   &kp N5     &kp N1   &kp N3    &kp N7    &kp RET
+   &sl MACNAV &kp N6   &kp N2    &kp N0           &kp N4      &kp LPAR    &kp RPAR   &kp N5     &kp N1   &kp N3    &kp N7    &kp RET
    &kp ESC    AS(SEMI) &kp FSLH  &kp KP_MULTIPLY  &kp N8      &kp LBKT    &kp RBKT   &kp N9     &kp PLUS &kp MINUS &none     &none
                                  &none            &kp SPACE   &kp BSPC    &none      &mo MACSYM &none
                         >;
@@ -246,7 +246,7 @@
 //                      | LCTRL | SPC | BSPC |   | L:NUM | L:SYM | ALT |
    bindings = <
    AS(TAB)     AS(SQT)  AS(COMMA) AS(DOT)   AS(P)     AS(Y)      AS(F)      AS(G)    AS(C)   AS(R)   AS(L)    &sl FUNC
-   &mo E_NAV  AS(A)    AS(O)     AS(E)     AS(U)     AS(I)      AS(D)      AS(H)    AS(T)   AS(N)   AS(S)    AS(RET)
+   &sl E_NAV     AS(A)    AS(O)     AS(E)     AS(U)     AS(I)      AS(D)      AS(H)    AS(T)   AS(N)   AS(S)    AS(RET)
    AS(ESC)     AS(SEMI) AS(Q)     AS(J)     AS(K)     AS(X)      AS(B)      AS(M)    AS(W)   AS(V)   AS(Z)    &sk RCMD
                         &sk LCTRL &kp SPACE &kp BSPC &mo E_NUM &sl E_SYM &sk RALT
                         >;
@@ -260,7 +260,7 @@
 //                     | MACRO1 | SPC | BSPC |   | NONE | 3:SYM |MACRO2|
    bindings = <
    &kp TAB    AS(SQT)  AS(COMMA) AS(DOT)          &kp CARET   &kp LBRC    &kp RBRC   &kp EQUAL &kp DLLR &kp HASH  &kp PRCNT &sl FUNC
-   &mo E_NAV  &kp N6   &kp N2    &kp N0           &kp N4      &kp LPAR    &kp RPAR   &kp N5    &kp N1   &kp N3    &kp N7    &kp RET
+   &sl E_NAV  &kp N6   &kp N2    &kp N0           &kp N4      &kp LPAR    &kp RPAR   &kp N5    &kp N1   &kp N3    &kp N7    &kp RET
    &kp ESC    AS(SEMI) &kp FSLH  &kp KP_MULTIPLY  &kp N8      &kp LBKT    &kp RBKT   &kp N9    &kp PLUS &kp MINUS &none     &none
                                  &none            &kp SPACE   &kp BSPC    &none      &mo E_SYM &none
                         >;
@@ -309,7 +309,7 @@
 //                      | LCTRL | SPC | BSPC |   | L:NUM | L:SYM | ALT |
    bindings = <
    AS(TAB)     AS(SQT)  AS(COMMA) AS(DOT)   AS(P)     AS(Y)      AS(F)      AS(G)    AS(C)   AS(R)   AS(L)    &sl FUNC
-   &mo WINNAV  AS(A)    AS(O)     AS(E)     AS(U)     AS(I)      AS(D)      AS(H)    AS(T)   AS(N)   AS(S)    AS(RET)
+   &sl WINNAV  AS(A)    AS(O)     AS(E)     AS(U)     AS(I)      AS(D)      AS(H)    AS(T)   AS(N)   AS(S)    AS(RET)
    AS(ESC)     AS(SEMI) AS(Q)     AS(J)     AS(K)     AS(X)      AS(B)      AS(M)    AS(W)   AS(V)   AS(Z)    &sk RCMD
                         &sk LCTRL &kp SPACE &kp BSPC &mo WINNUM &sl WINSYM &sk RALT
                         >;
@@ -323,7 +323,7 @@
 //                     | MACRO1 | SPC | BSPC |   | NONE | 3:SYM |MACRO2|
    bindings = <
    &kp TAB    AS(SQT)  AS(COMMA) AS(DOT)          &kp CARET   &kp LBRC    &kp RBRC   &kp EQUAL &kp DLLR &kp HASH  &kp PRCNT &sl FUNC
-   &mo MACNAV &kp N6   &kp N2    &kp N0           &kp N4      &kp LPAR    &kp RPAR   &kp N5    &kp N1   &kp N3    &kp N7    &kp RET
+   &sl WINNAV &kp N6   &kp N2    &kp N0           &kp N4      &kp LPAR    &kp RPAR   &kp N5    &kp N1   &kp N3    &kp N7    &kp RET
    &kp ESC    AS(SEMI) &kp FSLH  &kp KP_MULTIPLY  &kp N8      &kp LBKT    &kp RBKT   &kp N9    &kp PLUS &kp MINUS &none     &none
                                  &none            &kp SPACE   &kp BSPC    &none      &mo WINSYM &none
                         >;
@@ -340,7 +340,7 @@
    AS(TAB)       &kp LC(O)         &kp LC(BSPC)  &kp LC(DEL)          &kp F12     &kp LC(S)     &kp LC(F)          &kp PG_UP    &kp UP                &kp PG_DN     &kp LC(H)     &sl FUNC
    &to WINLIN    &kp LCTRL         &kp LALT      &kp LCMD             &kp LSHFT   &win_del_line &kp HOME           &kp LEFT     &kp DOWN              &kp RIGHT     &kp END       &kp RET
    &kp LC(MINUS) &kp LC(LS(EQUAL)) &kp LC(W)     &kp LG(DOWN)         &kp LC(N)   &kp LG(O)     &kp LC(LS((G)))     &kp F3       &kp LC(LEFT)          &kp LC(RIGHT) &kp LC(Z)     &kp LA(LC(TAB))
-                    	                         &kp LG(LA(LC(LEFT))) &kp LG(SPC) &kp BSPC      &mo G_NUM     &sl MACSYM   &kp LG(LA(LC(RIGHT)))
+                    	                         &kp LG(LA(LC(LEFT))) &kp LG(SPC) &kp BSPC      &mo G_NUM     &sl WINSYM   &kp LG(LA(LC(RIGHT)))
                         >;
                 };
 		
@@ -353,16 +353,16 @@
 //                           | CAPS  | CAPSWRD | DEL | | L:NUM | L:BASE | NONE |
                         bindings = <
    &kp LG(LS(S))   &kp LG(X)  &kp LG(C) &kp LG(V) &kp CARET  &kp LBRC &kp RBRC    &kp EQUAL   &kp DLLR &kp HASH  &kp PRCNT  &sl FUNC
-   &to E_NAV       &kp EXCL   &autopar  &kp TILDE &kp AT     &kp LPAR &kp RPAR    &kp UNDER   &autobkt &kp BSLH  &kp QMARK  &autobrc
+   &to WINNAV       &kp EXCL   &autopar  &kp TILDE &kp AT     &kp LPAR &kp RPAR    &kp UNDER   &autobkt &kp BSLH  &kp QMARK  &autobrc
    &kp ESC         &none      &kp FSLH  &kp STAR  &kp AMPS   &kp LBKT &kp RBKT    &kp GRAVE   &kp PLUS &kp MINUS &kp PIPE   &none
-                    	                &kp CAPS  &caps_word &kp DEL  &to E_NUM   &to EMACS   &none
+                    	                &kp CAPS  &caps_word &kp DEL  &to WINNUM   &to WINLIN   &none
                         >;
                 };
                 g_num_layer {
                         label = "G_NUM"; // layer 12
 // -----------------------------------------------------------------------------------------
 // | TAB   |  '  |  ,  |  .     |  ^  | {    |   | }    | =     |  $   |  #  |  %   | L:FNC |
-// | L:NAV |  6  |  2  |  0     |  4  | (    |   | )    | 5     |  1   |  3  |  7   | RET    |
+// | NONE |  6  |  2  |  0     |  4  | (    |   | )    | 5     |  1   |  3  |  7   | RET    |
 // | ESC   |  ;  |  /  |  *     |  8  | [    |   | ]    | 9     |  +   |  -  | NONE | NONE   |
 //                     | MACRO1 | SPC | BSPC |   | NONE | 3:SYM |MACRO2|
    bindings = <
