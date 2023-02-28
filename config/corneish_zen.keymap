@@ -91,7 +91,7 @@
      ZMK_MACRO(emacs_openfile,
         wait-ms = <30>;
         tap-ms = <40>;
-        bindings = < &kp LC(X) &kp F >;
+        bindings = < &kp LC(X) &kp LC(F) >;
     )
 
 
@@ -157,13 +157,13 @@
             compatible = "zmk,behavior-hold-tap";
             label = "AUTO_SHIFT";
             #binding-cells = <2>;
-            tapping_term_ms = <200>;
+            tapping_term_ms = <210>;
             quick_tap_ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
     };
-
+u
 
         keymap {
                 compatible = "zmk,keymap";
