@@ -147,6 +147,11 @@
         bindings = < &kp LT &kp EQUAL >;
     )
 
+     ZMK_MACRO(cpswrd,
+        tap-ms = <200>;
+	bindings=<&caps_word>;
+     )
+
 };
 
 
@@ -227,7 +232,7 @@
    &kp LG(LS(4))   &kp LG(X)  &kp LG(C) &kp LG(V) &kp CARET  &kp LBRC &kp RBRC    &kp EQUAL   &kp DLLR &kp HASH  &kp PRCNT  &sl FUNC
    &to MACNAV      &kp EXCL   &autopar  &kp TILDE &kp AT     &kp LPAR &kp RPAR    &kp UNDER   &autobkt &kp BSLH  &kp QMARK  &autobrc
    &kp LA(LG(ESC)) &none      &kp FSLH  &kp STAR  &kp AMPS   &kp LBKT &kp RBKT    &kp GRAVE   &kp PLUS &kp MINUS &kp PIPE   &none
-                    	                &kp CAPS     &caps_word &kp DEL  &to MACNUM  &to MACBASE &none
+                    	                &kp CAPS     &cpswrd &kp DEL  &to MACNUM  &to MACBASE &none
                         >;
                 };
 
