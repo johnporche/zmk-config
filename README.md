@@ -6,7 +6,7 @@ It has been optimized for the use of three different cases:
 3. Emacs
 
 The basic layout is Dvorak - used on MACBASE/EMACS/WINLIN
-
+-
 Each base layer has an associated set of support layers:
 1. Number
 2. Symbol
