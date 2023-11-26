@@ -69,13 +69,6 @@
     )
 
 
-     ZMK_MACRO(emacs_killbuff,
-        wait-ms = <30>;
-        tap-ms = <40>;
-        bindings = < &kp LC(X) &kp K >;
-    )
-
-
      ZMK_MACRO(emacs_closewin,
         wait-ms = <30>;
         tap-ms = <40>;
