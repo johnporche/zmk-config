@@ -89,7 +89,7 @@
 
 ZMK_MACRO(emacs_onewin,
 wait-ms = <30>;
-taps-ms = <40>;
+tap-ms = <40>;
 bindings = < &kp LC(X) &kp N1 >;
 )
 
@@ -340,7 +340,7 @@ bindings = < &kp LC(X) &kp N1 >;
                         bindings = <
    AS(TAB)       &kp LC(O)         &kp LC(BSPC)  &kp LC(DEL)          &kp F12     &kp LC(S)     &kp LC(F)          &kp PG_UP    &kp UP                &kp PG_DN     &kp LC(H)     &to FUNC
    &to WINLIN    &kp LCTRL         &kp LALT      &kp LCMD             &kp LSHFT   &win_del_line &kp HOME           &kp LEFT     &kp DOWN              &kp RIGHT     &kp END       &kp RET
-   &kp LG(UP)    &kp LG(DOWN)      &kp LC(W)     &kp LG(DOWN)         &kp LC(N)   &kp LG(O)     &kp LC(LS((G)))     &kp F3       &kp LC(LEFT)          &kp LC(RIGHT) &kp LC(Z)     &kp LA(LC(TAB))
+   &kp LG(UP)    &kp LG(DOWN)      &kp LC(W)     &kp LG(DOWN)         &kp LC(N)   &kp LG(O)     &kp LC(LS(G))     &kp F3       &kp LC(LEFT)          &kp LC(RIGHT) &kp LC(Z)     &kp LA(LC(TAB))
                     	                         &kp LG(LA(LC(LEFT))) &kp LG(SPC) &kp BSPC      &mo G_NUM     &sl WINSYM   &kp LG(LA(LC(RIGHT)))
                         >;
                 };
