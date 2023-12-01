@@ -225,7 +225,7 @@ bindings = < &kp LC(X) &kp N1 >;
 // | ESC   | QUIT | /   |  *   | &    | [   | | ]     |  `     |  +    |  -  |  PIPE | CAPS   |
 //                      | UNZM | ZOOM | DEL | | L:NUM | L:BASE | NONE  |
                         bindings = <
-   &kp LG(LS(4)) &kp LG(X)        &kp LG(C) &kp LG(V) &kp CARET  &kp LBRC &kp RBRC    &kp EQUAL   &kp DLLR &kp HASH  &kp PRCNT  &to FUNC
+   &kp LG(LS(N4)) &kp LG(X)        &kp LG(C) &kp LG(V) &kp CARET  &kp LBRC &kp RBRC    &kp EQUAL   &kp DLLR &kp HASH  &kp PRCNT  &to FUNC
    &to MACNAV    &kp EXCL         &autopar  &kp TILDE &kp AT     &kp LPAR &kp RPAR    &kp UNDER   &autobkt &kp BSLH  &kp QMARK  &autobrc
    AS(ESC)       &kp LG(LA(ESC)) &kp FSLH  &kp STAR  &kp AMPS   &kp LBKT &kp RBKT    &kp GRAVE   &kp PLUS &kp MINUS &kp PIPE   &kp CAPS  
                     	          &kp LG(MINUS) &kp  LG(LS(EQUAL)) &kp DEL  &to MACNUM  &to MACBASE &none
@@ -399,10 +399,10 @@ bindings = < &kp LC(X) &kp N1 >;
 // | NONE  |  NONE  |  NONE  |  NONE  | NONE     | NONE     |  NONE     |  NONE   |  NONE   |  NONE    |  NONE |  RESET    |  
 //                  |  NONE  | NONE   | MACBASE  | WINBASE  | EMACSBASE | NONE    |
                         bindings = <
-   &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3  &bt BT_PRV &bt BT_NXT &bt BT_CLR  &none   &none &none  &none &none 
+   &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3  &bt BT_PRV &bt BT_NXT &bt BT_CLR  &none   &none &none  &none &to FUNC 
    &none         &none        &none        &none         &none      &none      &none       &none   &none &none  &none &none
    &none         &none        &none        &none         &none      &none      &none       &none   &none &none  &none &none
-                    	                   &none         &none      &none      &none       &none   &none
+                    	                   &none         &none      &to MACBASE     &to WINLIN       &to EMACS   &none
                         >;
                 }; //keybd_layer
        
